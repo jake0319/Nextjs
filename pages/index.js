@@ -1,31 +1,22 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
-export default function Home() {
-  const code = "KOR"
-  const router = useRouter()
-
-  const onClickButton = () => {
-    router.push({
-      pathname: '/country/[code]',
-      query: {code}
-    })
-  }
-
+//서버에서 돔구성을 위해 초기 1회 실행,
+//이후 클라이언트에서 js번들 하이드레이션이후 리액트 컴포넌트 호출
+export default function Home({name}) {
   return (
     <>    
+      ServerSide Component
       <div>
-        <Link href={"/search"}>Search페이지로 이동</Link>
+        serverside props: {name}
       </div>
-      <div>
-        <Link href={`/country/${code}`}>템플릿 리터럴 방식으로 이동</Link>  
-      </div>
-      <div>
-        <Link href={{
-        pathname: '/country/[code]', 
-        query: {code: code}
-        }}>URL obejct형식으로 이동(좀 더구조화된 방식)</Link>
-      </div>
-      <button onClick={onClickButton}>KOR페이지로 이동하기 버튼</button>
     </>
   )
+}
+//서버에서만 실행되는 함수, web API호출 불가(ex: window.location)
+//아래함수를 정의한 컴포넌트는 SSR컴포넌트가 된다.
+export const getServerSideProps =()=>{
+  return{
+    props:{
+      name: 'KOREA',
+    }
+  }
 }
