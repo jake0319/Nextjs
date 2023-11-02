@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Country() {
+export default function Countries() {
   return (
-    <div>Country</div>
+    <div>Countries</div>
   )
 }

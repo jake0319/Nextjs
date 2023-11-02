@@ -8,10 +8,10 @@ export default function App({ Component, pageProps }) {
     <div>
       <Layout>
         {/* 서브레이아웃 ~ 푸터 */}
-        <Component.Layout>
+        <SubLayout>
           <Component {...pageProps} />
-        </Component.Layout>
+        </SubLayout>
       </Layout>
     </div>
   )
-}
+  } 
