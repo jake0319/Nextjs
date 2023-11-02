@@ -1,9 +1,8 @@
 import React from 'react'
-
-function Search() {
+import SubLayout from '@/components/SubLayout'
+export default function Search() {
   return (
     <div>Search페이지입니다.</div>
   )
 }
-
-export default Search
+Search.Layout = SubLayout;

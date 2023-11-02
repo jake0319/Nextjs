@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Layout.module.css'
 
-function Layout({children}) {
+export default function Layout({children}) {
   return (
     <div className="layout">
       <header className={style.header}>NARAS🌎</header>
@@ -9,4 +9,3 @@ function Layout({children}) {
     </div>
   )
 }
-export default Layout
