@@ -5,7 +5,10 @@ import { fetchCountry } from '../api'
 
 export default function Country({country}) {
   const router =useRouter()
-  // const code = router.query.code
+
+  if(router.isFallback){
+    return <div>page is loading...</div>
+  }
   return (
     <div>{country.commonName}:{country.officialName}</div>
   )
@@ -17,8 +20,7 @@ export const getStaticPaths = async () => {
       {params: {code: "ABW"}}, //params변수가 value의 키값으로
       {params: {code: "KOR"}}
    ],
-    fallback: false,
-    //따로 보여줄 페이지가 있다면
+    fallback: true,
   }
 }
 
