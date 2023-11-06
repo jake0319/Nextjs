@@ -10,9 +10,19 @@ export default function Country({country}) {
     <div>{country.commonName}:{country.officialName}</div>
   )
 }
-Country.Layout = SubLayout;
+Country.Layout = SubLayout; //_app.js의 Component로 해당 페이지 컴포넌트가 할당됨
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      {params: {code: "ABW"}}, //params변수가 value의 키값으로
+      {params: {code: "KOR"}}
+   ],
+    fallback: false,
+    //따로 보여줄 페이지가 있다면
+  }
+}
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const {code} = context.params
   let country = null
   if(code){
