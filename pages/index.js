@@ -1,4 +1,4 @@
-import { fetchCountries } from "./api";
+import { fetchCountries } from "../api";
 export default function Home({ countries }) {
   return (
     <div>

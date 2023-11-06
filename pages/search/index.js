@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import SubLayout from '@/components/SubLayout'
 import { useRouter } from 'next/router';
-import { fetchSearchResults } from '../api';
-export default function Search({countries}) {
+import { fetchSearchResults } from '@/api';
+export default function Search() {
   const [countries,setCountries] = useState([])
   const router = useRouter()
   const {q} = router.query
