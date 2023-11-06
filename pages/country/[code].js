@@ -21,6 +21,7 @@ export const getStaticPaths = async () => {
       {params: {code: "KOR"}}
    ],
     fallback: true,
+    //따로 보여줄 페이지가 있다면
   }
 }
 
