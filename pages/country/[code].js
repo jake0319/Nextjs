@@ -1,7 +1,9 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import SubLayout from '@/components/SubLayout'
 import { fetchCountry } from '@/api'
+import style from './[code].module.css'
 export default function Country({country}) {
   const router =useRouter()
 
@@ -9,8 +11,41 @@ export default function Country({country}) {
     return <div>page is loading...</div>
   }
   return (
-    <div>{country.commonName}:{country.officialName}</div>
-  )
+    <div className={style.container}>
+      <div className={style.header}>
+        <div className={style.commonName}>
+          {country.flagEmoji}&nbsp;{country.commonName}
+        </div>
+        <div className={style.officialName}>
+          {country.officialName}
+        </div>
+      </div>
+      <div className={style.flag_img}>
+        <Image
+          src={country.flagImg}
+          fill
+          alt={`${country.commonName}의 국기 이미지입니다`}
+        />
+      </div>
+      <div className={style.body}>
+        <div>
+          <b>코드 :</b>&nbsp;{country.code}
+        </div>
+        <div>
+          <b>수도 :</b>&nbsp;{country.capital.join(", ")}
+        </div>
+        <div>
+          <b>지역 :</b>&nbsp;{country.region}
+        </div>
+        <div>
+          <b>지도 :</b>&nbsp;
+          <a target="_blank" href={country.googleMapURL}>
+            {country.googleMapURL}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 }
 Country.Layout = SubLayout; //_app.js의 Component로 해당 페이지 컴포넌트가 할당됨
 export const getStaticPaths = async () => {
